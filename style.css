@@ -1,0 +1,547 @@
+/* ==========================================================================
+   REINICIALIZAÇÃO E ARQUITETURA DE PÁGINA INTEIRA
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+:root {
+    --primary-color: #d0e429;
+    --accent1:#d0e429; /* Mantido do exemplo para o efeito cromático */
+    --yellow: #d0e429; /* Variável do novo exemplo */
+    --accent2:#ff3b3b; /* Mantido do exemplo para o efeito cromático */
+    --secondary-color: #000000;
+    --text-color: var(--primary-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* O site agora ocupa a tela inteira. */
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-family: 'IM Fell English SC', serif;
+    overflow: hidden; /* REMOVIDO SCROLL: Previne qualquer barra de rolagem */
+}
+
+body {
+    /* O fundo é aplicado diretamente ao body */
+    background-image: url('assets/images/my-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* ==========================================================================
+   REMOÇÃO DO EFEITO DE "TELA"
+   ========================================================================== */
+
+/* #screen-wrapper não é mais um elemento visual. É apenas um container. */
+#screen-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* O overflow agora está no body para garantir que nada escape */
+}
+
+/* O container de fundo não é mais necessário, pois o fundo está no body. */
+#background-container { display: none; }
+
+.content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+    overflow: hidden; /* Garante que o conteúdo do card-container não vaze */
+}
+
+/* ==========================================================================
+   EFEITOS APLICADOS À PÁGINA INTEIRA
+   ========================================================================== */
+
+/* Vinheta aplicada à página inteira */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 5rem 3rem rgba(0,0,0,0.85); /* Vinheta escura e suave nas bordas */
+    pointer-events: none;
+    z-index: 99;
+}
+
+/* Overlays para scanlines e ruído */
+#scanline-overlay, .vhs-noise, .vhs-tracking-bar {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+#scanline-overlay {
+    background: repeating-linear-gradient(0deg, rgba(208, 228, 41, 0.08) 0, rgba(0,0,0,0.3) 1.5px, rgba(208, 228, 41, 0.08) 3px);
+    opacity: 0.6;
+    animation: scanline-jitter 1s linear infinite;
+}
+
+.vhs-noise {
+    opacity: 0.04; /* Ruído extremamente sutil */
+}
+.vhs-noise::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; right: -50%; bottom: -50%;
+    width: 200%; height: 200%;
+    background: transparent url('data:image/svg+xml,<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.2" numOctaves="1" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>') repeat;
+    background-size: 300px 300px;
+    animation: vhs-noise-anim 0.2s steps(2, end) infinite, magnetic-distortion 15s linear infinite;
+}
+
+/* Animações de distorção e anomalia de pixel aplicadas à página inteira */
+body {
+    animation: screen-flicker 20s linear infinite,
+               chromatic-aberration 8s linear infinite;
+}
+
+/* ==========================================================================
+   ANIMAÇÕES
+   ========================================================================== */
+
+@keyframes vhs-noise-anim {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-10%, 5%); }
+}
+
+@keyframes scanline-jitter {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(0.5px); }
+}
+
+@keyframes magnetic-distortion {
+    0%, 100% { filter: hue-rotate(0deg) saturate(1); }
+    25% { filter: hue-rotate(-5deg) saturate(1.2); }
+    50% { filter: hue-rotate(3deg) saturate(1); }
+    75% { filter: hue-rotate(5deg) saturate(1.5); }
+}
+
+@keyframes screen-flicker {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.05); }
+    50.1% { filter: brightness(0.95); }
+    50.2% { filter: brightness(1.05); }
+    75% { filter: brightness(1); }
+    75.1% { filter: brightness(0.9); }
+    75.2% { filter: brightness(1); }
+}
+
+/* IMPLEMENTADO: A animação de glitch que você forneceu. */
+@keyframes glitch-slice {
+    0% { transform: translate(0); clip-path: inset(50% 0 30% 0); }
+    10% { transform: translate(-8px, -4px); clip-path: inset(10% 0 85% 0); }
+    20% { transform: translate(8px, 4px); clip-path: inset(90% 0 5% 0); }
+    30% { transform: translate(-8px, 4px); clip-path: inset(40% 0 45% 0); }
+    40% { transform: translate(8px, -4px); clip-path: inset(80% 0 10% 0); }
+    50% { transform: translate(-8px, 0); clip-path: inset(20% 0 70% 0); }
+    60% { transform: translate(8px, 0); clip-path: inset(95% 0 2% 0); }
+    70% { transform: translate(-4px, -2px); clip-path: inset(0 0 100% 0); }
+    80% { transform: translate(4px, 2px); clip-path: inset(100% 0 0 0); }
+    90% { transform: translate(-4px, 2px); clip-path: inset(30% 0 60% 0); }
+    100% { transform: translate(0); clip-path: inset(50% 0 30% 0); }
+}
+
+@keyframes search-glitch-bg {
+    0%, 100% { clip-path: inset(0 0 0 0); } 5% { clip-path: inset(20% 0 60% 0); } 10% { clip-path: inset(80% 0 5% 0); } 15% { clip-path: inset(40% 0 40% 0); } 20% { clip-path: inset(90% 0 2% 0); } 25% { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes chromatic-aberration {
+    0%, 100% { text-shadow: 0 0; }
+    25% { text-shadow: 0.5px 0 rgba(255, 0, 255, 0.4), -0.5px 0 rgba(0, 255, 255, 0.4); }
+    50% { text-shadow: 0 0; }
+    75% { text-shadow: -0.5px 0 rgba(255, 0, 255, 0.4), 0.5px 0 rgba(0, 255, 255, 0.4); }
+}
+
+/* Animação para chacoalhar a tela inteira durante o jumpscare */
+.screen-shake {
+    animation: shake 0.05s infinite; /* 200% mais rápido */
+}
+
+@keyframes shake {
+    0% { transform: translate(1.5px, 1.5px) rotate(-0.75deg); } 10% { transform: translate(-1.5px, -3px) rotate(-2.25deg); } 20% { transform: translate(-4.5px, 0px) rotate(-0.75deg); } 30% { transform: translate(4.5px, 3px) rotate(0.75deg); } 40% { transform: translate(1.5px, -1.5px) rotate(-0.75deg); } 50% { transform: translate(-1.5px, 3px) rotate(2.25deg); } 60% { transform: translate(-4.5px, 1.5px) rotate(0.75deg); } 70% { transform: translate(4.5px, 1.5px) rotate(-2.25deg); } 80% { transform: translate(-1.5px, -1.5px) rotate(0.75deg); } 90% { transform: translate(1.5px, 3px) rotate(2.25deg); } 100% { transform: translate(1.5px, -3px) rotate(-0.75deg); } 
+}
+
+@keyframes rec-blink {
+    50% { opacity: 0; }
+}
+
+/* Animação para chacoalhar a tela VIGOROSAMENTE */
+.screen-shake-vigorous {
+    animation: shake-vigorous 0.02s infinite; /* Aumentada a velocidade */
+}
+
+@keyframes shake-vigorous {
+    0% { transform: translate(2px, 1px); }
+    10% { transform: translate(-2px, -3px); }
+    20% { transform: translate(4px, 0px); }
+    30% { transform: translate(-3px, 2px); }
+    40% { transform: translate(1px, -1px); }
+    50% { transform: translate(-2px, 3px); }
+    60% { transform: translate(-4px, 1px); }
+    70% { transform: translate(3px, 1px); }
+    80% { transform: translate(-1px, -2px); }
+    90% { transform: translate(2px, 3px); }
+    100% { transform: translate(1px, -3px); }
+}
+
+/* Animação para chacoalhar o texto VIGOROSAMENTE */
+.shaking-text-vigorous {
+    animation: shake-text-vigorous 0.03s infinite; /* Aumentada a velocidade e dessincronizada */
+}
+
+@keyframes shake-text-vigorous {
+    0% { transform: translate(-3px, 4px); }
+    10% { transform: translate(5px, -3px); }
+    20% { transform: translate(7px, 7px); }
+    30% { transform: translate(-6px, -2px); }
+    40% { transform: translate(4px, 5px); }
+    50% { transform: translate(-3px, -7px); }
+    60% { transform: translate(5px, 2px); }
+    70% { transform: translate(-7px, -4px); }
+    80% { transform: translate(3px, 6px); }
+    90% { transform: translate(-4px, -3px); }
+    100% { transform: translate(6px, -5px); }
+}
+
+/* ==========================================================================
+   CONTEÚDO PRINCIPAL
+   ========================================================================== */
+
+/* Estilo para o ASCII da landing page */
+#landing-ascii {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200; /* Garante que fique na frente de tudo */
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--primary-color);
+    font-size: 5px; /* Tamanho pequeno para formar a imagem */
+    line-height: 0.7; /* Linhas bem juntas */
+    text-align: center;
+    pointer-events: none; /* Não interfere com o clique no body */
+}
+
+.card-container {
+    flex-grow: 1;
+    position: relative;
+    padding: 0 5vw; 
+    width: 100%;
+}
+
+.text-fragment {
+    position: absolute;
+    max-width: clamp(250px, 30vw, 420px);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.text-fragment p {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.4;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.text-fragment h2 {
+    font-size: clamp(1.5rem, 2.2vw, 1.8rem);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    color: var(--text-color);
+    position: relative; /* Necessário para o efeito de glitch */
+}
+
+/* IMPLEMENTADO: O efeito de glitch do seu exemplo, aplicado apenas aos títulos. */
+.text-fragment h2::before,
+.text-fragment h2::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0; top: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.text-fragment h2::before {
+  color: #ffffff; /* Vermelho */
+  animation: glitch-slice 0.25s infinite linear;
+}
+
+.text-fragment h2::after {
+  color: #ffffff; /* Vermelho */
+  animation: glitch-slice 0.3s infinite linear reverse;
+}
+
+/* NOVAS REGRAS: Fontes maiores quando há menos texto na tela */
+.card-count-1 .text-fragment p { font-size: clamp(1.4rem, 2.5vw, 2.2rem); }
+.card-count-1 .text-fragment h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+
+.card-count-1 .text-fragment {
+    max-width: clamp(500px, 60vw, 900px); /* Aumenta a largura do card quando ele está sozinho */
+}
+.card-count-1 .text-fragment a { font-size: clamp(1.4rem, 2.5vw, 2.2rem); }
+
+.card-count-2 .text-fragment p { font-size: clamp(1.2rem, 2vw, 1.8rem); }
+.card-count-2 .text-fragment h2 { font-size: clamp(1.6rem, 2.5vw, 2.1rem); }
+.card-count-2 .text-fragment a { font-size: clamp(1.2rem, 2vw, 1.8rem); }
+
+.text-fragment a {
+    /* Define o tamanho da fonte padrão para corresponder ao parágrafo padrão. */
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    padding: 8px 0;
+    transition: color 0.2s;
+}
+
+.text-fragment a:hover {
+    text-shadow: none; /* CORREÇÃO: Garante que nenhum brilho seja aplicado no hover. */
+}
+
+.minds-mirror p {
+    white-space: pre-wrap;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    overflow: hidden;
+}
+
+/* .damaged-text pode ser usado para outros efeitos se desejado. */
+
+.laplace-code p, .laplace-code h2 {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.emergence-fade {
+    mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+}
+
+.entropy-equation h2 {
+    /* O efeito de glitch agora é aplicado a todos os h2. */
+}
+.entropy-equation p {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+.entropy-equation h2, .entropy-equation p, .entropy-equation a {
+    font-family: 'Futura Light', 'Futura', sans-serif;
+    font-weight: 300; /* Ajuda a selecionar a variante 'Light' da fonte */
+}
+
+.stirner-diary {
+    animation-duration: 25s;
+}
+.stirner-diary p {
+    line-height: 1.6;    
+}
+.stirner-diary h2, .stirner-diary p, .stirner-diary a {
+    font-family: 'Cedarville Cursive', cursive;
+}
+
+.minds-mirror #mirrored-output {
+    display: block;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: none;
+    opacity: 0.6;
+    transform: scaleX(-1);
+    text-align: right;
+    margin-top: 10px;
+    color: rgba(208, 228, 41, 0.7);
+}
+
+.shaking-text {
+    font-family: 'Jost', sans-serif !important; 
+    font-weight: 300; 
+    transform: rotate(-0.5deg); 
+}
+
+.flash-text {
+    font-size: 8vw; 
+    color: black; 
+    font-family: 'IM Fell English SC', serif;
+}
+
+/* Classe genérica para overlays de jumpscare/flash */
+.overlay-effect {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: var(--primary-color);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.void-collapse {
+    width: 80vw; height: 60vh;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;    
+    transition: none;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+.spiral-sequence {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.spiral-ascii {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--primary-color);
+    font-size: clamp(0.5rem, 1vw, 0.8rem);
+    line-height: 1;
+    margin-bottom: 2rem;
+}
+
+.spiral-question {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    margin-bottom: 2rem;
+}
+
+.spiral-options span {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin: 0 2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.spiral-options span:hover {
+    color: #fff;
+}
+
+.black-screen-fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    background-color: transparent; /* Começa transparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* A animação agora é aplicada ao fundo */
+    animation: fade-background-to-black 4s 1s forwards; 
+}
+
+.final-message {
+    color: var(--primary-color);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-family: 'IM Fell English SC', serif;
+    opacity: 0; /* Começa invisível */
+    /* A animação do texto acontece primeiro */
+    animation: fade-in-message 2s forwards; /* Aparece em 2s, sem delay inicial */
+}
+
+@keyframes fade-in-message {
+    to { opacity: 1; }
+}
+
+@keyframes fade-background-to-black {
+    to { background-color: #000; }
+}
+
+.main-footer {
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    background-color: transparent;
+    color: var(--primary-color);
+    z-index: 50;
+    flex-shrink: 0;
+}
+
+.vhs-timestamp {
+    position: fixed;
+    bottom: 15px;
+    right: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    color: var(--primary-color);
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   BARRA DE BUSCA
+   ========================================================================== */
+
+.search-container {
+    position: fixed;
+    bottom: 15px;
+    left: 25px;
+    z-index: 99;
+}
+
+#eerie-search-bar {
+    background-color: #000000;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    padding: 5px 8px;
+    width: 250px;
+    border-radius: 0;
+    outline: none;
+}
+
+#search-suggestions {
+    display: none;
+    position: absolute;
+    bottom: 100%; /* Posiciona acima da barra */
+    left: 0;
+    width: 250px;
+    background-color: #000000;
+    border: 1px solid var(--primary-color);
+    border-bottom: none;
+    color: var(--primary-color);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    padding: 5px 8px;
+}
+
+#cycle-counter {
+    position: fixed;
+    top: 15px;
+    right: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--primary-color);
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+    z-index: 502;
+    pointer-events: none;
+    opacity: 0.8;
+}

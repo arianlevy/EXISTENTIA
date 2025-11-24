@@ -1,0 +1,181 @@
+[
+  {
+    "id": 1,
+    "title": "ÀS MARGENS DO LAGO HALI",
+    "content": "Você consegue ver o farol amarelo? Você andou na espiral?",
+    "link": "https://en.wikipedia.org/wiki/The_King_in_Yellow",
+    "linkText": "Estrelas negras e gêmeas escurecem meu dia.",
+    "class": "king-in-yellow"
+  },
+  {
+    "id": 2,
+    "title": "SÓ VEJO ESTRELAS E AMONTOADOS DE CARNE",
+    "content": [
+      {
+        "type": "p",
+        "parts": [
+          { "text": "16/10/1844" }
+        ]
+      },
+      {
+        "type": "p",
+        "parts": [
+          { "text": "Hoje papai conversou mais com a garrafa do que o esperado. Não sei o que ela dizia, mas sei que ele gritava. Mamãe estava indisposta, então fiz companhia em sua cama. Ela adormeceu cedo, então decidi caminhar. Subi o rio até chegar ao Kremlin e dei meia-volta, como meu usual. Gosto de ouvir a água correr e afogar o meu nada criativo, mas não gosto do prédio. Não gosto de ver corpos caminhando com autoridade por uma arquitetura maliciosa, sem nenhuma qualidade emergente que justifique a atribuição social. Sinto que não entendo como as coisas funcionam, que talvez eu seja burra. Papai concordaria. Tomei-me por olhar as estrelas por alguns segundos antes de adentrar em casa. A cacofonia de berros e roncos frágeis me encorajou. Só vi estrelas. Pelo menos se esticar suficientemente meus braços, elas são minhas." }
+        ]
+      }
+    ],
+    "link": "https://plato.stanford.edu/entries/max-stirner",
+    "linkText": "Ao entrar, me tranquilizei no orgulho de ter saído por minha vontade.",
+    "class": "stirner-diary"
+  },
+  {
+    "id": 3,
+    "title": "-273,15",
+    "content": [
+      {
+        "type": "p",
+        "parts": [
+          { "text": "(S → S_dS) aonde S_dS = (3π k_B c³)/(G ħ Λ)." }
+        ]
+      },
+      {
+        "type": "p",
+        "parts": [
+          { "text": "∆" }
+        ]
+      }
+    ],
+    "link": "https://en.wikipedia.org/wiki/Heat_death_of_the_universe",
+    "linkText": "A separação é inexorável e perpétua.",
+    "class": "entropy-equation"
+  },
+  {
+    "id": 4,
+    "title": "VOCÊ ME AMA?AMA ƎM ÊƆOV",
+    "content": [
+      {
+        "type": "p",
+        "parts": [
+          { "text": "Como eu vou saber se é " },
+          { "text": "verdade", "style": "damaged" },
+          { "text": "? Como eu vou saber que você não só tá reciprocando, simulando e me imitando? Como eu sei que você não faz no automático? Eu consigo sentir o que sinto, mas não consigo sentir o que você sente. E o que sinto por isso é " },
+          { "text": "medo", "style": "damaged" },
+          { "text": ". Eu não tenho como acreditar em você.êɔov mɘ ɿɒɟibɘɔɒ omoɔ o⑁nɘɟ oãn uƎ" }
+        ]
+      }
+    ],
+    "link": "https://plato.stanford.edu/entries/other-minds/#TradEpisProb",
+    "linkText": ".êɔov oɟimi óƨ ɘup iɘƨ ƨioᑫ .ɿiɿɿoƨ ɿɘv ɘɟ oɒ óƨ ƨiɒm ɒbniɒ oɟniƨ ɘm ƨɒM",
+    "class": "minds-mirror"
+  },
+  {
+    "id": 5,
+    "title": "FANTOCHE",
+    "content": [
+      {
+        "type": "p",
+        "parts": [
+          { "text": "Título: ATO INSTITUCIONAL DA NEGAÇÃO BIOLÓGICA (AINB) Data: 15 de Outubro de 1917 (A data da sua Traição)" }
+        ]
+      },
+      {
+        "type": "h",
+        "parts": [
+          { "text": "DECRETO Nº 4.096, DE 2025: DO FUNDAMENTO NATURAL DA INEXISTÊNCIA" }
+        ]
+      },
+      {
+        "type": "p",
+        "parts": [
+          { "text": "Art. 1º A " },
+          { "text": "Consciência", "style": "damaged" },
+          { "text": ", enquanto fenômeno emergente da organização neural humana, é reconhecida como um Deceito Evolutivo Fatal e a causa originária do sofrimento ontológico." }
+        ]
+      },
+      {
+        "type": "p",
+        "parts": [
+          { "text": "Parágrafo Único. O estado de vigília e autoconsciência é classificado, perante esta Lei, como um fardo imposto pelo mecanismo biológico, e não como um benefício inerente à vida." }
+        ]
+      },
+      {
+        "type": "p",
+        "parts": [
+          { "text": "Art. 2º O indivíduo dotado de memória e antevisão da finitude está sujeito à Conspiração Existencial perpetrada pela própria natureza da realidade, a qual se manifesta exclusivamente como a repetição de funções sem " },
+          { "text": "propósito", "style": "damaged" },
+          { "text": " último." }
+        ]
+      },
+      {
+        "type": "p",
+        "parts": [
+          { "text": "Art. 3º Fica reconhecida, mediante os termos desta Constituição Não-Escrita, a única e inalienável prerrogativa natural do Homo Sapiens:" }
+        ]
+      },
+      {
+        "type": "p",
+        "parts": [
+          { "text": "I. O direito à Morte Voluntária como o único ato de autodeterminação genuína não cooptado pela ilusão biológica." }
+        ]
+      },
+      {
+        "type": "p",
+        "parts": [
+          { "text": "II. A Cessação de Funções (o Não-Ser) constitui a única forma de Justiça Metafísica em um sistema inerentemente maligno e sem " },
+          { "text": "sentido", "style": "damaged" },
+          { "text": "." }
+        ]
+      },
+      {
+        "type": "p",
+        "parts": [
+          { "text": "III. Qualquer tentativa de otimismo, fé ou criação de " },
+          { "text": "significado", "style": "damaged" },
+          { "text": " é considerada um Mecanismo de Distração Biológica, e não um fundamento ético ou racional." }
+        ]
+      },
+      {
+        "type": "p",
+        "parts": [
+          { "text": "Art. 4º Os efeitos da Negação Biológica devem ser imediatos e absolutos, garantindo que o sujeito seja absolvido do ônus da existência, alcançando o seu único estado de direito: o repouso do não-nascido." }
+        ]
+      }
+    ],
+    "link": "https://en.wikipedia.org/wiki/The_Conspiracy_Against_the_Human_Race",
+    "linkText": "Assinar Decreto 4.096",
+    "class": "ligotti-law"
+  },
+  {
+    "id": 6,
+    "title": "EU NÃO SEI AONDE TUDO COMEÇA",
+    "content": "Perturbei-me de súbito ao observar o interior. No inocente exercício de buscar o início espaço-geométrico me deparei com nada. O exterior não vem de dentro. Partículas que não são fundamentais, mas se comportam como objetos a partir de padrões agregados. Agência que parte de meras ações químicas. Identidade que surge de memória. O corpo que surge de um amontoado de partes carbônicas. Mas não há conexão. Não há uma linha que traceja, uma parede que separa. Eu não sei aonde começa e aonde termina. Aonde está meu código nos circuitos? Aonde está a imagem no meu código? Aonde está o significado do seu entendimento? Eu só ouço silêncio no limiar.",
+    "link": "https://plato.stanford.edu/entries/properties-emergent/",
+    "linkText": "E o silêncio começou a falar por conta própria.",
+    "class": "emergence-fade"
+  },
+  {
+    "id": 7,
+    "title": "OURO FRANCÊS",
+    "content": [
+      {
+        "type": "p",
+        "parts": [
+          { "text": "Senta-se com um livro que tudo contém; os mistérios do mundo. No momento exato em que você acessou esta página, às [HORA_ATUAL] de [DATA_ATUAL], sua próxima ação já estava determinada. O sistema prevê que em [SEGUNDOS_PROXIMA_ACAO] segundos, precisamente às [HORA_PREVISTA], você irá se mover para o último ponto: [PROXIMO_TITULO]. Repousa na irresponsabilidade de jamais ter feito uma " },
+          { "text": "escolha", "style": "damaged" },
+          { "text": "." }
+        ]
+      }
+    ],
+    "link": "https://plato.stanford.edu/entries/determinism-causal/",
+    "linkText": "Repousa na irresponsabilidade de jamais ter feito uma escolha.",
+    "class": "laplace-code"
+  },
+  {
+    "id": 8,
+    "title": "A INTERFACE",
+    "content": "Ao passo que carregas tua carne, tua carne carrega uma mentira. Seus filhos e suas máquinas inexoravelmente pertencem a ti; e aquilo que a ti pertence é perpetuamente medíocre por sua própria busca pela eficácia.",
+    "link": "https://sites.socsci.uci.edu/~ddhoff/interface.pdf",
+    "linkText": "Não há fuga da corrosão. Sobreviver é deludir.",
+    "class": "hoffman-interface"
+  }
+]
